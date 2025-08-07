@@ -1,0 +1,16 @@
+[package]
+name = "get_ajr"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+acap-logging = "0.1"
+acap-vapix = { git = "https://github.com/AxisCommunications/acap-rs.git", rev="deeab047042d27a359979a342dc5739ac51bdeba" }
+anyhow = "1.0"
+axum = "0.8"
+log = "0.4"
+serde_json = "1.0"
+thiserror = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+tower-http = { version = "0.6", features = ["fs", "trace"] }

@@ -1,0 +1,20 @@
+{
+    "schemaVersion": "1.7.0",
+    "acapPackageConf": {
+        "setup": {
+            "appName": "get_ajr",
+            "runMode": "never",
+            "vendor": "None",
+            "version": "0.0.0"
+        },
+        "configuration": {
+            "reverseProxy": [
+                {
+                    "apiPath": "vapix/",
+                    "target": "http://localhost:2001",
+                    "access": "admin"
+                }
+            ]
+        }
+    }
+}

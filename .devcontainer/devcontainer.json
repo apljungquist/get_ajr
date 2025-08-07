@@ -1,0 +1,59 @@
+{
+    "name": "acap-rs-app-template",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {},
+        "ghcr.io/devcontainers/features/node:1": {
+            "nodeGitTagVersion": "lts"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "vadimcn.vscode-lldb",
+                "serayuzgur.crates",
+                "tamasfe.even-better-toml",
+                "ms-vscode.vscode-json",
+                "ms-azuretools.vscode-docker",
+                "formulahendry.code-runner",
+                "usernamehw.errorlens",
+                "mutantdino.resourcemonitor",
+                "ms-vscode.test-adapter-converter",
+                "hbenl.vscode-test-explorer"
+            ],
+            "settings": {
+                "rust-analyzer.checkOnSave.command": "clippy",
+                "rust-analyzer.cargo.features": "all",
+                "rust-analyzer.procMacro.enable": true,
+                "rust-analyzer.inlayHints.enable": true,
+                "rust-analyzer.completion.addCallParentheses": false,
+                "rust-analyzer.completion.addCallArgumentSnippets": false,
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "rust-lang.rust-analyzer",
+                "[rust]": {
+                    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+                    "editor.formatOnSave": true
+                },
+                "[json]": {
+                    "editor.defaultFormatter": "vscode.json-language-features",
+                    "editor.formatOnSave": true
+                },
+                "[dockerfile]": {
+                    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+                },
+                "files.watcherExclude": {
+                    "**/target/**": true
+                },
+                "json.schemas": []
+            }
+        }
+    },
+    "postCreateCommand": {
+        "claude": "npm install -g @anthropic-ai/claude-code@latest"
+    },
+    "remoteUser": "${localEnv:USER}"
+}
