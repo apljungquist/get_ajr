@@ -6,11 +6,11 @@ use log::{error, warn};
 
 #[derive(Debug, thiserror::Error)]
 pub enum AppError {
-    #[error("Invalid URL path: {0}")]
-    InvalidUrlPath(anyhow::Error),
+    #[error("Invalid path: {0}")]
+    InvalidPath(anyhow::Error),
 
-    #[error("Invalid JSON path")]
-    InvalidJsonPath,
+    #[error("Invalid query: {0}")]
+    InvalidQuery(anyhow::Error),
 
     #[error("Internal error: {0}")]
     Internal(anyhow::Error),
@@ -22,9 +22,9 @@ pub enum AppError {
 impl IntoResponse for AppError {
     fn into_response(self) -> Response {
         let status = match &self {
-            AppError::InvalidJsonPath => StatusCode::BAD_REQUEST,
+            AppError::InvalidQuery(_) => StatusCode::BAD_REQUEST,
             AppError::Internal(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            AppError::InvalidUrlPath(_) => StatusCode::BAD_REQUEST,
+            AppError::InvalidPath(_) => StatusCode::BAD_REQUEST,
             AppError::Other(_) => StatusCode::BAD_REQUEST,
         };
 
